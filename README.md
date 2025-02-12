@@ -17,6 +17,10 @@ The LLM Course project is designed to provide a comprehensive learning experienc
 ## Features
 
 - **Lab 3-4**: Image generation from text and from text to image. 
+- **Exercise 3**: Language Learning Assistant. 
+- **Exercise 4**: Learning Tutor Chatbot. 
+- **Lab 5**: Prompt Enginnering. 
+- **Lab 9-10**: Tokenization and Embedding from different formats (PDF, Image, Docx, xls). 
 
 ## Installation
 
@@ -32,11 +36,13 @@ To get started with the LLM Course, follow these steps:
     ```
 3. Install the required dependencies:
     ```bash
-    pip install -r requirements.txt
+    chmod +x setup.sh
+    ./setup.sh
     ```
 4. Go to https://huggingface.co/ and download models into the `/model` folder
     - https://huggingface.co/Salesforce/blip-image-captioning-base
     - https://huggingface.co/nlpconnect/vit-gpt2-image-captioning
+    - https://huggingface.co/TheBloke/Llama-2-7B-Chat-GGUF/blob/main/llama-2-7b-chat.Q4_K_M.gguf
 
 ## Usage
 

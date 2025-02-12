@@ -2,3 +2,10 @@ openai
 streamlit
 torch
 llama-cpp-python
+pytesseract
+fitz
+nltk
+python-docx
+openpyxl
+gensim
+sentence_transformers
