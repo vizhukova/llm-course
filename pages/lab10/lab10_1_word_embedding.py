@@ -3,8 +3,9 @@ from nltk.tokenize import word_tokenize
 import nltk
 import numpy as np
 
+nltk.download('punkt')
+
 def embed_sentences(sentences: list[str]):
-    nltk.download('punkt')
 
     tokenized_sentences = [word_tokenize(sentence.lower()) for sentence in sentences]
 

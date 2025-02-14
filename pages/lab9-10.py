@@ -8,6 +8,7 @@ from lab9.lab9_5_xls import extract_data_from_excel
 from lab10.lab10_1_word_embedding import embed_sentences as embed_sentences_with_nltk
 from lab10.lab10_2_sentence_transformer import embed_sentences as embed_sentences_with_hugging_face
 from lab10.lab10_3_openai_embedding import embed_sentences as embed_sentences_with_openai
+from lab11_12 import VectorDBStorage, button_add_display, button_search_display
 
 UPLOAD_FOLDER = "uploaded_files"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)  
@@ -20,8 +21,11 @@ def tab_content(
         uploader_type:list = [],
         to_text_function:callable = None,
         segment_name: str = "Sentence",
-        show_embedded: bool = True
+        show_embedded: bool = True,
+        is_image_content: bool = False,
         ):
+    
+    vector_db_storage = VectorDBStorage(title)
     
     embed_function = ''
     if embed_option == embed_with_nltk:
@@ -45,31 +49,33 @@ def tab_content(
         with open(file_path, "wb") as f:
             f.write(uploaded_file.getbuffer())
 
+        if is_image_content: 
+            st.image(file_path)
+
         sentences = to_text_function(file_path)
-        result = ""
-        for i, sentence in enumerate(sentences):
-            st.write(f"**{segment_name}_{i}:** {sentence}")
-            # result += f"<span><b>{segment_name}_{i}:</b> {sentence}</span><br>"
-            if show_embedded:
-                st.write("**Embeded: **")
-                embeded = embed_function([sentence])
-                if 'error' in embeded:
-                    st.error(embeded['error'])
-                    break
-                else:
-                    st.write(embeded)
-        #         result += (
-        #             "<span><b>Embeded:</b></span>"
-        #             f"<p>{embed_function([sentence])}</p>"
-        #         )
-        # st.html(result)
-        
-        # Removing uploaded file from temporary folder
-        if os.path.exists(file_path):
-            os.remove(file_path)
-            print(f"File '{file_path}' deleted successfully!")
-        else:
-            print("File not found!")
+
+        embedding_tab, vector_db_tab = st.tabs(["Embeddings", "Vector DB"])
+
+        if show_embedded:
+            with vector_db_tab:
+                st.subheader("You can:")
+                st.write("1.Add the embedding to the Vector DB to be able search by this values later: ")
+                button_add_display(vector_db_storage, sentences, file_path, origin_file_name=uploaded_file.name)
+                st.write("2.Search the similarity of the embedding with the existing data in the Vector DB: ")
+                button_search_display(vector_db_storage, is_image_content=is_image_content, query_texts=sentences)
+
+        with embedding_tab:
+            st.header('Result: ')
+            for i, sentence in enumerate(sentences):
+                st.write(f"**{segment_name}_{i}:** {sentence}")
+                if show_embedded:
+                    st.write("**Embeded**:")
+                    embeded = embed_function([sentence])
+                    if 'error' in embeded:
+                        st.error(embeded['error'])
+                        break
+                    else:
+                        st.write(embeded)
 
 with st.expander("See explanation"):
     st.markdown('''
@@ -86,6 +92,9 @@ with st.expander("See explanation"):
             - sentence-transformers/paraphrase-multilingual-mpnet-base-v2
         * **OpenAI**
             * text-embedding-ada-002
+        
+        VectorDB usage:
+        * **ChromaDB**     
     ''')
 
 st.title("Tokenization")
@@ -105,7 +114,8 @@ with image_tab:
                 uploader_title="Upload an Image file", 
                 uploader_type=["png", "jpg", "jpeg"],
                 to_text_function=image_to_words,
-                segment_name="Word")
+                segment_name="Word",
+                is_image_content=True)
 
 with docx_tab:
     tab_content(title="Docx File Tokenization",

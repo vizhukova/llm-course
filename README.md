@@ -19,8 +19,9 @@ The LLM Course project is designed to provide a comprehensive learning experienc
 - **Lab 3-4**: Image generation from text and from text to image. 
 - **Exercise 3**: Language Learning Assistant. 
 - **Exercise 4**: Learning Tutor Chatbot. 
-- **Lab 5**: Prompt Enginnering. 
-- **Lab 9-10**: Tokenization and Embedding from different formats (PDF, Image, Docx, xls). 
+- **Lab 5-8**: Prompt Enginnering. 
+- **Lab 9-12**: Tokenization and Embedding from different formats (PDF, Image, Docx, xls). 
+Working with the Vector DB.
 
 ## Installation
 
