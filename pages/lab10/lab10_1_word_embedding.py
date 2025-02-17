@@ -9,7 +9,7 @@ def embed_sentences(sentences: list[str]):
 
     tokenized_sentences = [word_tokenize(sentence.lower()) for sentence in sentences]
 
-    print(tokenized_sentences)
+    # print(tokenized_sentences)
 
     model = Word2Vec(sentences=tokenized_sentences, vector_size=100, window=5, min_count=1, workers=4)
 

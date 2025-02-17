@@ -1,6 +1,8 @@
-.vscode
+.vscode/
 **__pycache__
-venv
+venv/
 .env
-model/*
-uploaded_files
+model/
+uploaded_files/
+chroma_db/
+faiss_db/

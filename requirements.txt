@@ -10,3 +10,8 @@ openpyxl
 gensim
 sentence_transformers
 chromadb
+langchain-community
+langchain_core
+langchain_openai
+faiss-cpu
+numpy

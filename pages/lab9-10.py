@@ -8,7 +8,7 @@ from lab9.lab9_5_xls import extract_data_from_excel
 from lab10.lab10_1_word_embedding import embed_sentences as embed_sentences_with_nltk
 from lab10.lab10_2_sentence_transformer import embed_sentences as embed_sentences_with_hugging_face
 from lab10.lab10_3_openai_embedding import embed_sentences as embed_sentences_with_openai
-from lab11_12 import VectorDBStorage, button_add_display, button_search_display
+from lab11_12 import button_add_display, button_search_display, ChromaStorage, FAISSStorage
 
 UPLOAD_FOLDER = "uploaded_files"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)  
@@ -24,8 +24,6 @@ def tab_content(
         show_embedded: bool = True,
         is_image_content: bool = False,
         ):
-    
-    vector_db_storage = VectorDBStorage(title)
     
     embed_function = ''
     if embed_option == embed_with_nltk:
@@ -58,6 +56,10 @@ def tab_content(
 
         if show_embedded:
             with vector_db_tab:
+                chroma_db, faiss = vector_db_options = ("ChromaDB", "FAISS")
+                vector_db_option = st.selectbox("What Vector DB would you like to use?", vector_db_options, key=f"vector_db_selectbox_{title}")
+                vector_db_storage =  ChromaStorage(name=title) if vector_db_option == chroma_db else FAISSStorage(name=title)
+    
                 st.subheader("You can:")
                 st.write("1.Add the embedding to the Vector DB to be able search by this values later: ")
                 button_add_display(vector_db_storage, sentences, file_path, origin_file_name=uploaded_file.name)
@@ -94,11 +96,12 @@ with st.expander("See explanation"):
             * text-embedding-ada-002
         
         VectorDB usage:
-        * **ChromaDB**     
+        * **ChromaDB**
+        * **FAISS**    
     ''')
 
 st.title("Tokenization")
-embed_option = st.selectbox("What embedding option you would like to use?", embed_options)
+embed_option = st.selectbox("What embedding option you would like to use?", embed_options, key="embed_selectbox")
 
 pdf_tab, image_tab, docx_tab, xls_tab = st.tabs(["PDF", "Image", "Docx", "XLS"])
 
