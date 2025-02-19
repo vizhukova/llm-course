@@ -1,10 +1,10 @@
 from sentence_transformers import SentenceTransformer
-from env import HUGGING_FACE_TOKEN
+from env import HUGGINGFACEHUB_API_TOKEN
 
 def embed_sentences(sentences: list[str]):
     try:
-        model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2', token=HUGGING_FACE_TOKEN)
-        # model = SentenceTransformer('sentence-transformers/paraphrase-multilingual-mpnet-base-v2', token=HUGGING_FACE_TOKEN)
+        model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2', token=HUGGINGFACEHUB_API_TOKEN)
+        # model = SentenceTransformer('sentence-transformers/paraphrase-multilingual-mpnet-base-v2', token=HUGGINGFACEHUB_API_TOKEN)
         embeddings = model.encode(sentences)
         return embeddings
     except Exception as e:

@@ -22,6 +22,7 @@ The LLM Course project is designed to provide a comprehensive learning experienc
 - **Lab 5-8**: Prompt Enginnering. 
 - **Lab 9-12**: Tokenization and Embedding from different formats (PDF, Image, Docx, xls). 
 Working with the Vector DB.
+- **Lab 13**: Langchain
 
 ## Installation
 
@@ -50,7 +51,7 @@ To get started with the LLM Course, follow these steps:
 Fill the .env file with the 
 ```
 OPENAI_API_KEY=""
-HUGGING_FACE_TOKEN=""
+HUGGINGFACEHUB_API_TOKEN=""
 ENV="local" #  'local' if you downloaded all model into folder **/model** OR keep this value empty ''
 to use the server version
 ```

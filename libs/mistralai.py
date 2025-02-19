@@ -1,9 +1,9 @@
-from env import HUGGING_FACE_TOKEN
+from env import HUGGINGFACEHUB_API_TOKEN
 from huggingface_hub import InferenceClient
 
 def generate_text(prompt: str) -> str:
     client = InferenceClient(
-        api_key=HUGGING_FACE_TOKEN
+        api_key=HUGGINGFACEHUB_API_TOKEN
     )
 
     messages = [

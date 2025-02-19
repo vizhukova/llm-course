@@ -13,5 +13,7 @@ chromadb
 langchain-community
 langchain_core
 langchain_openai
+langchain_huggingface
 faiss-cpu
 numpy
+python-dotenv

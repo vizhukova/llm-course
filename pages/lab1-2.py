@@ -1,18 +1,18 @@
-from env import HUGGING_FACE_TOKEN
+from env import HUGGINGFACEHUB_API_TOKEN
 
 from transformers import pipeline
 
 # Hugging Face opensource usage
 
 # Default model usage
-generation = pipeline('text-generation', token=HUGGING_FACE_TOKEN)
+generation = pipeline('text-generation', token=HUGGINGFACEHUB_API_TOKEN)
 print('Default model usage: ', generation('write a book about genAI'))
 
 # Using a specific model
 generation = pipeline(
   'text-generation', 
   model="openai-community/gpt2-large", 
-  token=HUGGING_FACE_TOKEN
+  token=HUGGINGFACEHUB_API_TOKEN
   )
 print('Specific model usage: ', generation('write a book about genAI'))
 
@@ -21,7 +21,7 @@ temperature_value = 0.8
 top_p_value = 0.9
 max_length_value = 100
 
-generation = pipeline('text-generation', token=HUGGING_FACE_TOKEN)
+generation = pipeline('text-generation', token=HUGGINGFACEHUB_API_TOKEN)
 prompt = "write a book about AI"
 output = generation(
 prompt,
@@ -36,7 +36,7 @@ temperature_value = 0.8
 top_p_value = 0.9
 max_length_value = 100
 
-generation = pipeline('summarization', token=HUGGING_FACE_TOKEN)
+generation = pipeline('summarization', token=HUGGINGFACEHUB_API_TOKEN)
 prompt = """
 Once upon a time, in a lush, green forest filled with towering trees and sparkling streams, there lived a little bear named Benji. Benji wasn’t like the other bears. While most of his bear family liked to spend their days hunting for honey and fishing by the river, Benji had a different passion—he loved exploring.
 
@@ -80,7 +80,7 @@ print('Summarization model usage: ', output[0]['summary_text'])
 sentiment_pipeline = pipeline(
   "sentiment-analysis", 
   model="tabularisai/multilingual-sentiment-analysis", 
-  token=HUGGING_FACE_TOKEN
+  token=HUGGINGFACEHUB_API_TOKEN
   )
 data = [
   "I love spending time with my family and friends.",
@@ -119,7 +119,7 @@ for i in wrong_results:
   print(f"{data[i]}; Expected result: {expected_result[i]}; Actual result: {sentiment_result[i]['label']}")
 
 # Using translation model
-translation = pipeline("translation_en_to_fr", token=HUGGING_FACE_TOKEN)
+translation = pipeline("translation_en_to_fr", token=HUGGINGFACEHUB_API_TOKEN)
 temperature_value = 0.8
 top_p_value = 0.9
 max_length_value = 100
