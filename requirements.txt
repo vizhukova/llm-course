@@ -3,7 +3,6 @@ streamlit
 torch
 llama-cpp-python
 pytesseract
-fitz
 nltk
 python-docx
 openpyxl
@@ -17,3 +16,6 @@ langchain_huggingface
 faiss-cpu
 numpy
 python-dotenv
+pypdf
+pymupdf
+beautifulsoup4

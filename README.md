@@ -23,6 +23,7 @@ The LLM Course project is designed to provide a comprehensive learning experienc
 - **Lab 9-12**: Tokenization and Embedding from different formats (PDF, Image, Docx, xls). 
 Working with the Vector DB.
 - **Lab 13**: Langchain
+- **Lab 14**: RAG based on Langchain
 
 ## Installation
 
@@ -54,6 +55,7 @@ OPENAI_API_KEY=""
 HUGGINGFACEHUB_API_TOKEN=""
 ENV="local" #  'local' if you downloaded all model into folder **/model** OR keep this value empty ''
 to use the server version
+USER_AGENT = "Mozilla/5.0" # for lab14 - to upload the content from the web
 ```
 
 To start the course, run the following command:
