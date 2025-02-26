@@ -14,9 +14,10 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 with st.expander("See explanation"):
     st.markdown('''
-    Implementation of the RAG with the usage of the Langchain for the
-    - PDF files
-    - Web URLs
+    The goal of this project is to develop a Generative AI system capable of extracting information
+    and generating coherent responses to user queries within a given PDF document. The system will
+    enable users to upload a PDF file, pose questions related to the document's content, and receive
+    accurate and contextually relevant answers
     ''')
 
 # Use Hugging Face Inference API

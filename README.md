@@ -15,15 +15,18 @@ Welcome to the LLM Course project! This README provides an overview of the proje
 The LLM Course project is designed to provide a comprehensive learning experience for those interested in Large Language Models (LLMs). This course covers various aspects of LLMs, including their architecture, training, and applications.
 
 ## Features
-
-- **Lab 3-4**: Image generation from text and from text to image. 
-- **Exercise 3**: Language Learning Assistant. 
+- **Exercise 8**: Generative PDF Question Answering System.
+- **Exercise 7**: Building an IT Issue Resolution System with PDF Embedding and Similarity Search.
+- **Exercise 6**: Time Travelling Detective Story.
+- **Exercise 5**: MCQ Question Generation.
 - **Exercise 4**: Learning Tutor Chatbot. 
+- **Exercise 3**: Language Learning Assistant.
+- **Exercise 2**: Text Translation Using Transformers English to French.
+- **Exercise 1**: Sentiment Analysis Using Transformers.
+- **Lab 3-4**: Image generation from text and from text to image. 
 - **Lab 5-8**: Prompt Enginnering. 
 - **Lab 9-12**: Tokenization and Embedding from different formats (PDF, Image, Docx, xls). 
 Working with the Vector DB.
-- **Lab 13**: Langchain
-- **Lab 14**: RAG based on Langchain
 
 ## Installation
 
